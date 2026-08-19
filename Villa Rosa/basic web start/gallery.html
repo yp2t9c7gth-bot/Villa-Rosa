@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery — Villa Rosa, Viganj</title>
+<meta name="description" content="Photos of Villa Rosa: the house, the pool, the terraces and the view over the Adriatic to Korčula.">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.masonry{columns:3 280px;column-gap:1.1rem;}
+.masonry figure{break-inside:avoid;margin:0 0 1.1rem;border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(28,53,71,.1);cursor:zoom-in;position:relative;}
+.masonry figure img{width:100%;display:block;transition:transform .5s ease;}
+.masonry figure:hover img{transform:scale(1.04);}
+.masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem;background:linear-gradient(0deg,rgba(11,53,71,.75),transparent);color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.02em;opacity:0;transition:opacity .3s ease;}
+.masonry figure:hover figcaption{opacity:1;}
+.gal-filter{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem;}
+.gal-filter button{
+  font-family:var(--body);font-weight:600;font-size:.82rem;letter-spacing:.03em;
+  padding:.55em 1.2em;border-radius:100px;border:2px solid var(--adriatic);
+  background:transparent;color:var(--adriatic);cursor:pointer;transition:all .25s ease;
+}
+.gal-filter button.active,.gal-filter button:hover{background:var(--adriatic);color:#fff;}
+@media (max-width:700px){.masonry{columns:1 280px;}}
+</style>
+</head>
+<body>
+
+<header class="site-header solid">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="9" fill="#F7C53F"/>
+        <g stroke="#C8532E" stroke-width="2.4" stroke-linecap="round">
+          <line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/>
+          <line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/>
+          <line x1="7.5" y1="7.5" x2="11" y2="11"/><line x1="29" y1="29" x2="32.5" y2="32.5"/>
+          <line x1="32.5" y1="7.5" x2="29" y2="11"/><line x1="11" y1="29" x2="7.5" y2="32.5"/>
+        </g>
+      </svg>
+      <span>Villa Rosa<span class="brand-sub">Viganj · Croatia</span></span>
+    </a>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="the-villa.html">The Villa</a></li>
+        <li><a href="gallery.html" class="active">Gallery</a></li>
+        <li><a href="viganj.html">Viganj</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="availability.html" class="nav-cta">Check Availability</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" style="min-height:46vh;">
+  <div class="hero-media"><img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/fcb9f72c.jpg?impolicy=resizecrop&rw=1800&ra=fit" alt="Villa Rosa exterior"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content wrap">
+    <span class="hero-eyebrow">Gallery</span>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.6rem);">The house, the pool, the view</h1>
+  </div>
+</section>
+
+<div class="scallop" style="--above:var(--ink);--below:var(--white);"></div>
+
+<section class="section bg-white">
+  <div class="wrap">
+    <div class="gal-filter reveal">
+      <button class="active" data-filter="all">All</button>
+      <button data-filter="house">The House</button>
+      <button data-filter="pool">Pool &amp; Terrace</button>
+      <button data-filter="views">Sea Views</button>
+    </div>
+
+    <div class="masonry reveal">
+      <figure data-cat="house" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/1a9f3346.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="Living area">
+        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/1a9f3346.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Living area with stone wall, fireplace and foosball table">
+        <figcaption>Living area</figcaption>
+      </figure>
+      <figure data-cat="pool" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/4c40db86.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="Front terrace">
+        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/4c40db86.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Sunlit front terrace with lounge chairs overlooking the sea">
+        <figcaption>Front terrace</figcaption>
+      </figure>
+      <figure data-cat="pool" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/6ea9b46c.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="The pool">
+        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/6ea9b46c.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Swimming pool with sun loungers and stone wall">
+        <figcaption>Pool area, plenty of sun beds</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/fcb9f72c.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="Exterior">
+        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/fcb9f72c.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Villa exterior with tiled roof and wrought iron gate">
+        <figcaption>Exterior</figcaption>
+      </figure>
+      <figure data-cat="views" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/1be19bf2.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="View of Korčula">
+        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/1be19bf2.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="View of Korčula through the window">
+        <figcaption>The view towards Korčula</figcaption>
+      </figure>
+      <figure data-cat="house" class="ph" style="aspect-ratio:4/5;"><span>bedroom photos<br>coming soon</span></figure>
+      <figure data-cat="pool" class="ph" style="aspect-ratio:4/3;"><span>outdoor dining,<br>evening</span></figure>
+      <figure data-cat="views" class="ph" style="aspect-ratio:1/1;"><span>the ferry<br>to Korčula</span></figure>
+      <figure data-cat="house" class="ph" style="aspect-ratio:4/3;"><span>the kitchen</span></figure>
+      <figure data-cat="views" class="ph" style="aspect-ratio:4/5;"><span>golden hour<br>on the terrace</span></figure>
+    </div>
+
+    <p class="body-text center mt-2" style="margin-left:auto;margin-right:auto;">More photography is on its way — this gallery currently uses Villa Rosa's existing listing photos, with space held for the rest.</p>
+  </div>
+</section>
+
+<section class="section-sm bg-lemon">
+  <div class="wrap center reveal">
+    <h2 style="font-size:clamp(1.8rem,3.5vw,2.6rem);">Seen enough? Come and stay.</h2>
+    <div class="hero-ctas" style="justify-content:center;margin-top:1.6rem;">
+      <a href="availability.html" class="btn btn-primary">Check Availability</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div><div class="footer-brand">Villa Rosa</div><p style="color:rgba(255,253,248,.7);max-width:26em;">Viganj, Pelješac<br>Croatia</p></div>
+      <div class="footer-col"><h4>Explore</h4><a href="the-villa.html">The Villa</a><a href="gallery.html">Gallery</a><a href="viganj.html">Viganj</a><a href="explore.html">Explore</a></div>
+      <div class="footer-col"><h4>Plan</h4><a href="reviews.html">Reviews</a><a href="availability.html">Availability</a><a href="contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Get in touch</h4><a href="tel:+447745309227">+44 7745 309227</a><a href="contact.html">Send an enquiry</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; <span class="js-year"></span> Villa Rosa, Viganj</span></div>
+  </div>
+</footer>
+
+<div class="lightbox"><button class="lightbox-close" aria-label="Close">&times;</button><img src="" alt=""></div>
+<script src="assets/js/main.js"></script>
+<script>
+document.querySelectorAll('.gal-filter button').forEach(function(btn){
+  btn.addEventListener('click', function(){
+    document.querySelectorAll('.gal-filter button').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    var f = btn.getAttribute('data-filter');
+    document.querySelectorAll('.masonry figure').forEach(function(fig){
+      fig.style.display = (f==='all' || fig.getAttribute('data-cat')===f) ? '' : 'none';
+    });
+  });
+});
+</script>
+</body>
+</html>

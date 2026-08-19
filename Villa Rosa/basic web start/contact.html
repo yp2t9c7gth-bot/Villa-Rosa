@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Villa Rosa, Viganj</title>
+<meta name="description" content="Get in touch about your stay at Villa Rosa, Viganj — a private seafront villa on the Pelješac Peninsula, Croatia.">
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+.enquiry-form{background:var(--white);border-radius:26px;padding:clamp(1.6rem,4vw,3rem);box-shadow:0 20px 50px rgba(28,53,71,.1);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.field{margin-bottom:1.3rem;}
+.field label{display:block;font-size:.82rem;font-weight:600;letter-spacing:.02em;color:var(--ink);margin-bottom:.45rem;}
+.field input,.field textarea,.field select{
+  width:100%;padding:.85em 1em;border-radius:12px;border:1.5px solid rgba(28,53,71,.15);
+  font-family:var(--body);font-size:.98rem;color:var(--ink);background:var(--cream);
+  transition:border-color .2s ease, background .2s ease;
+}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--adriatic);background:var(--white);}
+.field textarea{resize:vertical;min-height:120px;}
+@media (max-width:640px){.form-row{grid-template-columns:1fr;}}
+#form-confirm{display:none;text-align:center;padding:3rem 1rem;}
+</style>
+</head>
+<body>
+
+<header class="site-header solid">
+  <div class="wrap">
+    <a href="index.html" class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="9" fill="#F7C53F"/>
+        <g stroke="#C8532E" stroke-width="2.4" stroke-linecap="round">
+          <line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/>
+          <line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/>
+          <line x1="7.5" y1="7.5" x2="11" y2="11"/><line x1="29" y1="29" x2="32.5" y2="32.5"/>
+          <line x1="32.5" y1="7.5" x2="29" y2="11"/><line x1="11" y1="29" x2="7.5" y2="32.5"/>
+        </g>
+      </svg>
+      <span>Villa Rosa<span class="brand-sub">Viganj · Croatia</span></span>
+    </a>
+    <nav>
+      <ul class="nav-list">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="the-villa.html">The Villa</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="viganj.html">Viganj</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="reviews.html">Reviews</a></li>
+        <li><a href="availability.html" class="nav-cta">Check Availability</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<section class="page-hero" style="min-height:40vh;">
+  <div class="hero-media"><img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/4c40db86.jpg?impolicy=resizecrop&rw=1800&ra=fit" alt="Villa Rosa terrace at golden hour"></div>
+  <div class="hero-scrim"></div>
+  <div class="hero-content wrap">
+    <span class="hero-eyebrow">Get in touch</span>
+    <h1 style="font-size:clamp(2.2rem,5vw,3.4rem);">Let's plan your stay</h1>
+  </div>
+</section>
+
+<div class="scallop" style="--above:var(--ink);--below:var(--cream);"></div>
+
+<section class="section bg-cream">
+  <div class="wrap">
+    <div class="editorial-grid">
+      <div style="grid-column:1/span 4;" class="reveal">
+        <span class="eyebrow">Contact</span>
+        <h2 style="font-size:clamp(1.8rem,3vw,2.4rem);">Any questions, just ask.</h2>
+        <p class="body-text mt-2">Whether it's a question about the villa, a request for a longer stay, or help arranging transfers and boat trips — send a message and we'll get back to you.</p>
+        <div class="mt-3">
+          <div class="glance-item" style="margin-bottom:1rem;">
+            <strong>Phone</strong>
+            <span><a href="tel:+447745309227" style="color:var(--terracotta);font-weight:600;">+44 7745 309227</a></span>
+          </div>
+          <div class="glance-item">
+            <strong>Location</strong>
+            <span>Viganj, Pelješac, Croatia</span>
+          </div>
+        </div>
+      </div>
+      <div style="grid-column:6/span 7;" class="reveal reveal-2">
+        <form class="enquiry-form" id="enquiry-form">
+          <div class="form-row">
+            <div class="field"><label for="name">Full name</label><input type="text" id="name" name="name" required></div>
+            <div class="field"><label for="email">Email</label><input type="email" id="email" name="email" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="checkin">Check-in</label><input type="date" id="checkin" name="checkin"></div>
+            <div class="field"><label for="checkout">Check-out</label><input type="date" id="checkout" name="checkout"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="guests">Number of guests</label><input type="number" id="guests" name="guests" min="1" max="10"></div>
+            <div class="field"><label for="phone">Phone (optional)</label><input type="tel" id="phone" name="phone"></div>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your trip — dates, group size, or anything else we can help with."></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Enquiry</button>
+        </form>
+        <div id="form-confirm" class="enquiry-form">
+          <h3>Thank you</h3>
+          <p class="body-text mt-1" style="margin:0 auto;">Your enquiry has been noted. We'll be in touch shortly — for anything urgent, call <a href="tel:+447745309227" style="color:var(--terracotta);font-weight:600;">+44 7745 309227</a> directly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div><div class="footer-brand">Villa Rosa</div><p style="color:rgba(255,253,248,.7);max-width:26em;">Viganj, Pelješac<br>Croatia</p></div>
+      <div class="footer-col"><h4>Explore</h4><a href="the-villa.html">The Villa</a><a href="gallery.html">Gallery</a><a href="viganj.html">Viganj</a><a href="explore.html">Explore</a></div>
+      <div class="footer-col"><h4>Plan</h4><a href="reviews.html">Reviews</a><a href="availability.html">Availability</a><a href="contact.html">Contact</a></div>
+      <div class="footer-col"><h4>Get in touch</h4><a href="tel:+447745309227">+44 7745 309227</a><a href="contact.html">Send an enquiry</a></div>
+    </div>
+    <div class="footer-bottom"><span>&copy; <span class="js-year"></span> Villa Rosa, Viganj</span></div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>
