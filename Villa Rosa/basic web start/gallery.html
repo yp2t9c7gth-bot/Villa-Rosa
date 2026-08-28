@@ -11,10 +11,10 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <style>
 .masonry{columns:3 280px;column-gap:1.1rem;}
-.masonry figure{break-inside:avoid;margin:0 0 1.1rem;border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(28,53,71,.1);cursor:zoom-in;position:relative;}
+.masonry figure{break-inside:avoid;margin:0 0 1.1rem;border-radius:20px;overflow:hidden;box-shadow:0 12px 30px rgba(14,35,64,.1);cursor:zoom-in;position:relative;}
 .masonry figure img{width:100%;display:block;transition:transform .5s ease;}
 .masonry figure:hover img{transform:scale(1.04);}
-.masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem;background:linear-gradient(0deg,rgba(11,53,71,.75),transparent);color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.02em;opacity:0;transition:opacity .3s ease;}
+.masonry figcaption{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem;background:linear-gradient(0deg,rgba(14,35,64,.75),transparent);color:#fff;font-size:.82rem;font-weight:600;letter-spacing:.02em;opacity:0;transition:opacity .3s ease;}
 .masonry figure:hover figcaption{opacity:1;}
 .gal-filter{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2.5rem;}
 .gal-filter button{
@@ -32,13 +32,8 @@
   <div class="wrap">
     <a href="index.html" class="brand">
       <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="9" fill="#F7C53F"/>
-        <g stroke="#C8532E" stroke-width="2.4" stroke-linecap="round">
-          <line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/>
-          <line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/>
-          <line x1="7.5" y1="7.5" x2="11" y2="11"/><line x1="29" y1="29" x2="32.5" y2="32.5"/>
-          <line x1="32.5" y1="7.5" x2="29" y2="11"/><line x1="11" y1="29" x2="7.5" y2="32.5"/>
-        </g>
+        <text x="1" y="27" font-family="'Fraunces', Georgia, serif" font-size="25" font-weight="600" letter-spacing="-2" fill="currentColor">VR</text>
+        <path d="M3 34 Q8 30 13 34 T23 34 T33 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
       </svg>
       <span>Villa Rosa<span class="brand-sub">Viganj · Croatia</span></span>
     </a>
@@ -59,7 +54,7 @@
 </header>
 
 <section class="page-hero" style="min-height:46vh;">
-  <div class="hero-media"><img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/fcb9f72c.jpg?impolicy=resizecrop&rw=1800&ra=fit" alt="Villa Rosa exterior"></div>
+  <div class="hero-media"><img src="assets/images/gallery-hero-golden-hour.jpg" alt="Villa Rosa's pool and terrace at golden hour, with the village bell tower in the background" style="object-position:50% 60%;"></div>
   <div class="hero-scrim"></div>
   <div class="hero-content wrap">
     <span class="hero-eyebrow">Gallery</span>
@@ -67,9 +62,7 @@
   </div>
 </section>
 
-<div class="scallop" style="--above:var(--ink);--below:var(--white);"></div>
-
-<section class="section bg-white">
+<section class="section bg-cream">
   <div class="wrap">
     <div class="gal-filter reveal">
       <button class="active" data-filter="all">All</button>
@@ -78,35 +71,112 @@
       <button data-filter="views">Sea Views</button>
     </div>
 
-    <div class="masonry reveal">
+    <div class="masonry">
+      <figure data-cat="house" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/fcb9f72c.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="Exterior">
+        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/fcb9f72c.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Villa exterior with tiled roof and wrought iron gate">
+        <figcaption>Exterior</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/gate-exterior.jpg" data-caption="The entrance">
+        <img src="assets/images/gate-exterior.jpg" alt="The wrought-iron gate at the entrance to Villa Rosa">
+        <figcaption>The entrance</figcaption>
+      </figure>
       <figure data-cat="house" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/1a9f3346.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="Living area">
         <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/1a9f3346.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Living area with stone wall, fireplace and foosball table">
         <figcaption>Living area</figcaption>
-      </figure>
-      <figure data-cat="pool" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/4c40db86.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="Front terrace">
-        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/4c40db86.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Sunlit front terrace with lounge chairs overlooking the sea">
-        <figcaption>Front terrace</figcaption>
       </figure>
       <figure data-cat="pool" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/6ea9b46c.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="The pool">
         <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/6ea9b46c.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Swimming pool with sun loungers and stone wall">
         <figcaption>Pool area, plenty of sun beds</figcaption>
       </figure>
-      <figure data-cat="house" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/fcb9f72c.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="Exterior">
-        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/fcb9f72c.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Villa exterior with tiled roof and wrought iron gate">
-        <figcaption>Exterior</figcaption>
+      <figure data-cat="pool" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/4c40db86.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="Front terrace">
+        <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/4c40db86.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="Sunlit front terrace with lounge chairs overlooking the sea">
+        <figcaption>Front terrace</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/bedroom-1.jpg" data-caption="Bedroom one">
+        <img src="assets/images/bedroom-1.jpg" alt="Bedroom one at Villa Rosa with a sea view through the window">
+        <figcaption>Bedroom one</figcaption>
       </figure>
       <figure data-cat="views" data-lightbox="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/1be19bf2.jpg?impolicy=resizecrop&rw=1400&ra=fit" data-caption="View of Korčula">
         <img src="https://media.vrbo.com/lodging/24000000/23370000/23365300/23365222/1be19bf2.jpg?impolicy=resizecrop&rw=700&ra=fit" alt="View of Korčula through the window">
         <figcaption>The view towards Korčula</figcaption>
       </figure>
-      <figure data-cat="house" class="ph" style="aspect-ratio:4/5;"><span>bedroom photos<br>coming soon</span></figure>
-      <figure data-cat="pool" class="ph" style="aspect-ratio:4/3;"><span>outdoor dining,<br>evening</span></figure>
-      <figure data-cat="views" class="ph" style="aspect-ratio:1/1;"><span>the ferry<br>to Korčula</span></figure>
-      <figure data-cat="house" class="ph" style="aspect-ratio:4/3;"><span>the kitchen</span></figure>
-      <figure data-cat="views" class="ph" style="aspect-ratio:4/5;"><span>golden hour<br>on the terrace</span></figure>
+      <figure data-cat="house" data-lightbox="assets/images/gallery-kitchen-wide.jpg" data-caption="The kitchen">
+        <img src="assets/images/gallery-kitchen-wide.jpg" alt="Fitted kitchen with wooden countertop and bar stools">
+        <figcaption>The kitchen</figcaption>
+      </figure>
+      <figure data-cat="pool" data-lightbox="assets/images/pool-sunset.jpg" data-caption="Golden hour by the pool">
+        <img src="assets/images/pool-sunset.jpg" alt="Villa Rosa's private pool at golden hour, with the village bell tower behind">
+        <figcaption>Golden hour by the pool</figcaption>
+      </figure>
+      <figure data-cat="views" data-lightbox="assets/images/turquoise-water.jpg" data-caption="Turquoise water, right outside">
+        <img src="assets/images/turquoise-water.jpg" alt="Turquoise Adriatic water near Viganj">
+        <figcaption>Turquoise water, right outside</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/gallery-dining-room.jpg" data-caption="Dining room">
+        <img src="assets/images/gallery-dining-room.jpg" alt="Stone-walled dining room with a large wooden table">
+        <figcaption>Dining room</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/bedroom-2.jpg" data-caption="Bedroom two">
+        <img src="assets/images/bedroom-2.jpg" alt="Bedroom two at Villa Rosa under the wooden roof beams">
+        <figcaption>Bedroom two</figcaption>
+      </figure>
+      <figure data-cat="pool" data-lightbox="assets/images/terrace-lounge.jpg" data-caption="Covered terrace lounge">
+        <img src="assets/images/terrace-lounge.jpg" alt="Covered pergola lounge with sofas and the pool beyond">
+        <figcaption>Covered terrace lounge</figcaption>
+      </figure>
+      <figure data-cat="views" data-lightbox="assets/images/kayaks-beach.jpg" data-caption="Kayaks, ready on the water">
+        <img src="assets/images/kayaks-beach.jpg" alt="Kayaks and beach toys ready on the shore near Viganj">
+        <figcaption>Kayaks, ready on the water</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/gallery-fireplace-evening.jpg" data-caption="Fireplace lounge, evening">
+        <img src="assets/images/gallery-fireplace-evening.jpg" alt="Stone fireplace lounge lit in the evening">
+        <figcaption>Fireplace lounge, evening</figcaption>
+      </figure>
+      <figure data-cat="pool" data-lightbox="assets/images/citrus-tree-terrace.jpg" data-caption="Lunch under the citrus tree">
+        <img src="assets/images/citrus-tree-terrace.jpg" alt="Terrace dining beneath a citrus tree at Villa Rosa">
+        <figcaption>Lunch under the citrus tree</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/bedroom-3.jpg" data-caption="Bedroom three">
+        <img src="assets/images/bedroom-3.jpg" alt="Bedroom three at Villa Rosa">
+        <figcaption>Bedroom three</figcaption>
+      </figure>
+      <figure data-cat="views" data-lightbox="assets/images/kayaking-family.jpg" data-caption="Family kayaking">
+        <img src="assets/images/kayaking-family.jpg" alt="Family kayaking on the Adriatic near Viganj">
+        <figcaption>Family kayaking</figcaption>
+      </figure>
+      <figure data-cat="pool" data-lightbox="assets/images/pool-loungers-a.jpg" data-caption="The pool, another angle">
+        <img src="assets/images/pool-loungers-a.jpg" alt="Villa Rosa's private pool with sun loungers and mountain views">
+        <figcaption>The pool, another angle</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/gallery-antique-cabinet.jpg" data-caption="Character details">
+        <img src="assets/images/gallery-antique-cabinet.jpg" alt="Antique wooden cabinet with lamp and framed photos">
+        <figcaption>Character details throughout</figcaption>
+      </figure>
+      <figure data-cat="views" data-lightbox="assets/images/swing-over-water.jpg" data-caption="A swing over the water">
+        <img src="assets/images/swing-over-water.jpg" alt="A swing over the water near Villa Rosa">
+        <figcaption>A swing over the water</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/bikes-wall.jpg" data-caption="Six-plus bikes, ready to explore">
+        <img src="assets/images/bikes-wall.jpg" alt="Bikes lined up against the stone wall at Villa Rosa">
+        <figcaption>Six-plus bikes, ready to explore</figcaption>
+      </figure>
+      <figure data-cat="views" data-lightbox="assets/images/windsurfing.jpg" data-caption="Windsurfing at Viganj">
+        <img src="assets/images/windsurfing.jpg" alt="Windsurfing lesson in the shallow water off Viganj beach">
+        <figcaption>Windsurfing at Viganj</figcaption>
+      </figure>
+      <figure data-cat="house" data-lightbox="assets/images/gallery-living-room.jpg" data-caption="Living room">
+        <img src="assets/images/gallery-living-room.jpg" alt="Living room with leather sofas, wooden beams and open kitchen">
+        <figcaption>Living room</figcaption>
+      </figure>
+      <figure data-cat="views" data-lightbox="assets/images/window-sea-view.jpg" data-caption="Sea view from the window">
+        <img src="assets/images/window-sea-view.jpg" alt="Sea view through a bedroom window at Villa Rosa">
+        <figcaption>Sea view from the window</figcaption>
+      </figure>
+      <figure data-cat="pool" data-lightbox="assets/images/outdoor-lounge.jpg" data-caption="Covered outdoor lounge">
+        <img src="assets/images/outdoor-lounge.jpg" alt="Covered outdoor lounge with sofas and fireplace at Villa Rosa">
+        <figcaption>Covered outdoor lounge</figcaption>
+      </figure>
     </div>
-
-    <p class="body-text center mt-2" style="margin-left:auto;margin-right:auto;">More photography is on its way — this gallery currently uses Villa Rosa's existing listing photos, with space held for the rest.</p>
   </div>
 </section>
 
@@ -122,7 +192,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div><div class="footer-brand">Villa Rosa</div><p style="color:rgba(255,253,248,.7);max-width:26em;">Viganj, Pelješac<br>Croatia</p></div>
+      <div><div class="footer-brand">Villa Rosa</div><p style="color:rgba(250,248,244,.7);max-width:26em;">Viganj, Pelješac<br>Croatia</p></div>
       <div class="footer-col"><h4>Explore</h4><a href="the-villa.html">The Villa</a><a href="gallery.html">Gallery</a><a href="viganj.html">Viganj</a><a href="explore.html">Explore</a></div>
       <div class="footer-col"><h4>Plan</h4><a href="reviews.html">Reviews</a><a href="availability.html">Availability</a><a href="contact.html">Contact</a></div>
       <div class="footer-col"><h4>Get in touch</h4><a href="tel:+447745309227">+44 7745 309227</a><a href="contact.html">Send an enquiry</a></div>
@@ -131,7 +201,12 @@
   </div>
 </footer>
 
-<div class="lightbox"><button class="lightbox-close" aria-label="Close">&times;</button><img src="" alt=""></div>
+<div class="lightbox">
+  <button class="lightbox-close" aria-label="Close">&times;</button>
+  <button class="lightbox-nav lightbox-prev" aria-label="Previous image">&#8249;</button>
+  <button class="lightbox-nav lightbox-next" aria-label="Next image">&#8250;</button>
+  <img src="" alt="">
+</div>
 <script src="assets/js/main.js"></script>
 <script>
 document.querySelectorAll('.gal-filter button').forEach(function(btn){

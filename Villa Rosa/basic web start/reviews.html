@@ -9,6 +9,33 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
+<style>
+.review-rating{
+  display:inline-flex;align-items:center;gap:.4em;
+  background:var(--adriatic);color:var(--cloud);
+  padding:.35em .9em;border-radius:100px;font-weight:700;font-size:.76rem;letter-spacing:.03em;
+  margin-bottom:1.1rem;
+}
+.review-rating svg{width:13px;height:13px;flex-shrink:0;}
+.review-title{font-family:var(--display);font-size:1.35rem;font-weight:600;line-height:1.25;margin-bottom:.7rem;color:var(--ink);}
+.review-pull{font-family:var(--display);font-style:italic;font-size:1.18rem;color:var(--adriatic);line-height:1.4;margin-bottom:1rem;}
+.review-body{color:var(--ink-soft);font-size:.96rem;line-height:1.72;}
+.review-body p{margin:0 0 .9rem;}
+.review-body p:last-child{margin-bottom:0;}
+.review-more summary{
+  cursor:pointer;list-style:none;display:inline-block;
+  font-weight:600;font-size:.86rem;color:var(--adriatic);
+  border-bottom:1.5px solid currentColor;padding-bottom:.15em;margin-top:.7rem;
+  transition:color .3s ease;
+}
+.review-more summary::-webkit-details-marker{display:none;}
+.review-more summary:hover{color:var(--ink);}
+.review-more[open] summary{margin-bottom:1rem;}
+.review-more .less-label{display:none;}
+.review-more[open] summary .more-label{display:none;}
+.review-more[open] summary .less-label{display:inline;}
+.review-card-lg{padding:clamp(1.6rem,3vw,2.2rem);}
+</style>
 </head>
 <body>
 
@@ -16,13 +43,8 @@
   <div class="wrap">
     <a href="index.html" class="brand">
       <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="9" fill="#F7C53F"/>
-        <g stroke="#C8532E" stroke-width="2.4" stroke-linecap="round">
-          <line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/>
-          <line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/>
-          <line x1="7.5" y1="7.5" x2="11" y2="11"/><line x1="29" y1="29" x2="32.5" y2="32.5"/>
-          <line x1="32.5" y1="7.5" x2="29" y2="11"/><line x1="11" y1="29" x2="7.5" y2="32.5"/>
-        </g>
+        <text x="1" y="27" font-family="'Fraunces', Georgia, serif" font-size="25" font-weight="600" letter-spacing="-2" fill="currentColor">VR</text>
+        <path d="M3 34 Q8 30 13 34 T23 34 T33 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
       </svg>
       <span>Villa Rosa<span class="brand-sub">Viganj · Croatia</span></span>
     </a>
@@ -51,8 +73,6 @@
   </div>
 </section>
 
-<div class="scallop" style="--above:var(--ink);--below:var(--cream);"></div>
-
 <section class="section bg-cream">
   <div class="wrap center reveal">
     <div style="display:inline-flex;flex-wrap:wrap;gap:.8rem;justify-content:center;">
@@ -65,34 +85,94 @@
   </div>
 </section>
 
-<div class="scallop" style="--above:var(--cream);--below:var(--white);"></div>
+<div class="scallop" style="--above:var(--cream);--below:var(--sky);"></div>
 
-<section class="section bg-white">
+<section class="section bg-sky">
   <div class="wrap">
     <div class="section-head center reveal">
-      <span class="eyebrow">A note on this page</span>
-      <h2>Real guest quotes coming soon.</h2>
-      <p class="lede mt-1">We'd rather leave this space open than put words in a guest's mouth. As soon as we can pull specific quotes across from Vrbo, this page will feature them properly — each one credited, unedited, and genuine.</p>
+      <span class="eyebrow">In their words</span>
+      <h2>What guests are saying.</h2>
+      <p class="lede mt-1">A selection of real reviews from guests who've stayed at Villa Rosa, unedited and genuine — lightly tidied for spacing only.</p>
     </div>
-    <div class="glance-grid">
-      <div class="glance-item reveal reveal-1">
-        <div class="review-card" style="box-shadow:none;padding:0;">
-          <span class="quote-mark">"</span>
-          <p style="color:var(--ink-soft);font-style:italic;">Guest review coming soon.</p>
+    <div class="editorial-grid">
+
+      <div style="grid-column:1/span 7;" class="reveal reveal-1">
+        <div class="review-card review-card-lg">
+          <span class="review-rating">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            10/10 Excellent
+          </span>
+          <p class="review-pull">&ldquo;You probably won&rsquo;t want to leave.&rdquo;</p>
+          <div class="review-body">
+            <p>A great property in a superb, relatively quiet location. There were 8 people in our group, (mum and dad, three 20 year old sons partners/friends), and the house and location kept us all fully entertained and occupied, (and cool thanks to the air-con in every room), for our two week stay.</p>
+          </div>
+          <details class="review-more">
+            <summary><span class="more-label">Read full review &rarr;</span><span class="less-label">Show less</span></summary>
+            <div class="review-body">
+              <p>The owner was always easily accessible and very helpful and provided lots of tips on places to visit, eat, drink and go food shopping - all in easy reach of the villa. Korčula is a must see/visit. A local water taxi (again recommended the owner) collected us from outside the property and brought us back. Would definitely recommend this.</p>
+              <p>The kayaks were a bonus and used every day to explore the coastline. Wind and kitesurfing lessons are available near by for the more adventurous. You probably won't want to leave.</p>
+              <p>Thank you again for sharing your lovely villa.</p>
+            </div>
+          </details>
         </div>
       </div>
-      <div class="glance-item reveal reveal-2">
-        <div class="review-card" style="box-shadow:none;padding:0;">
-          <span class="quote-mark">"</span>
-          <p style="color:var(--ink-soft);font-style:italic;">Guest review coming soon.</p>
+
+      <div style="grid-column:8/span 5;" class="reveal reveal-2">
+        <div class="review-card review-card-lg">
+          <span class="review-rating">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            10/10 Excellent
+          </span>
+          <h3 class="review-title">Summer holiday with friends</h3>
+          <p class="review-pull">&ldquo;You really don&rsquo;t need a car.&rdquo;</p>
+          <div class="review-body">
+            <p>We were a group of 10 with adult children. The house was in a great location. A quiet road in front of the house where people walk/cycle up and down. Supermarket and bakery a stone's throw away and restaurants / ferry to Korčula very nearby. Wind surfing lessons were enjoyed by the children. You really don't need a car. Use of bikes and kayaks was a bonus.</p>
+          </div>
         </div>
       </div>
-      <div class="glance-item reveal reveal-3">
-        <div class="review-card" style="box-shadow:none;padding:0;">
-          <span class="quote-mark">"</span>
-          <p style="color:var(--ink-soft);font-style:italic;">Guest review coming soon.</p>
+
+      <div style="grid-column:1/span 5;margin-top:1.6rem;" class="reveal reveal-3">
+        <div class="review-card review-card-lg">
+          <span class="review-rating">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            10/10 Excellent
+          </span>
+          <h3 class="review-title">Lovely house in an incredible location</h3>
+          <p class="review-pull">&ldquo;Would definitely go back.&rdquo;</p>
+          <div class="review-body">
+            <p>We had a really good time in the house. It's beautiful and the location couldn't be better. We made good use of the kayaks, table tennis and plentiful space. There were 8 of us though the house could sleep more. Beds really comfortable, air con worked well and lots of different spaces to sit and chill out.</p>
+          </div>
+          <details class="review-more">
+            <summary><span class="more-label">Read full review &rarr;</span><span class="less-label">Show less</span></summary>
+            <div class="review-body">
+              <p>A few nice restaurants within walking distance plus bakery and small shop of doorstep made the stay really easy - we did a trip to a supermarket 10 min ago away to do a bigger shop. Water taxi is brilliant - a few euros to go to beautiful Korčula Old Town and back. Sally was very responsive whenever we got in touch. Would definitely go back.</p>
+            </div>
+          </details>
         </div>
       </div>
+
+      <div style="grid-column:6/span 7;margin-top:1.6rem;" class="reveal reveal-4">
+        <div class="review-card review-card-lg">
+          <span class="review-rating">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            10/10 Excellent
+          </span>
+          <p class="review-pull">&ldquo;As for the pool, it made our holiday.&rdquo;</p>
+          <div class="review-body">
+            <p>What a wonderful holiday we've just had! Our party of four adults and four teenagers had a great time and it was all thanks to the outstanding accommodation in Viganj. The large lounge and kitchen area fitted everyone in comfortably, with a large table available for dining or card/board games.</p>
+          </div>
+          <details class="review-more">
+            <summary><span class="more-label">Read full review &rarr;</span><span class="less-label">Show less</span></summary>
+            <div class="review-body">
+              <p>There were also dining tables at the front of the house and at the rear, where a perfect sheltered area meant breakfasts and lunches could be had without risks from the sun. The kitchen had a coffee maker (Nespresso type) and an Italian stove top one. The hob and oven were sizeable, to allow serious cooking. There were easily enough plates, cups and tumblers to survive beyond the point of a full dishwasher. The washing machine, second fridge/freezer and microwave were ideal.</p>
+              <p>The bedrooms were great for our group, with one family going downstairs, the other upstairs. Each room had air conditioning, so sleeping was easy. Toilets and showers were clean and suitably roomy. As for the pool, it made our holiday, as the youngsters - as well as the adults - played in it for hours. Water temperature was great and the size was adequate for all eight of us to have fun.</p>
+              <p>Viganj is quite a distance from Dubrovnik, so be prepared for a couple of hours of driving, or more, but it's well served with a supermarket, two bakeries, and several excellent restaurants &amp; bars. You will not go hungry!</p>
+              <p>Overall, I can only thoroughly recommend this villa for its outstanding facilities and the great locale.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -109,7 +189,7 @@
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div><div class="footer-brand">Villa Rosa</div><p style="color:rgba(255,253,248,.7);max-width:26em;">Viganj, Pelješac<br>Croatia</p></div>
+      <div><div class="footer-brand">Villa Rosa</div><p style="color:rgba(250,248,244,.7);max-width:26em;">Viganj, Pelješac<br>Croatia</p></div>
       <div class="footer-col"><h4>Explore</h4><a href="the-villa.html">The Villa</a><a href="gallery.html">Gallery</a><a href="viganj.html">Viganj</a><a href="explore.html">Explore</a></div>
       <div class="footer-col"><h4>Plan</h4><a href="reviews.html">Reviews</a><a href="availability.html">Availability</a><a href="contact.html">Contact</a></div>
       <div class="footer-col"><h4>Get in touch</h4><a href="tel:+447745309227">+44 7745 309227</a><a href="contact.html">Send an enquiry</a></div>

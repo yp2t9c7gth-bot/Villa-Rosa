@@ -9,6 +9,113 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+/* ---- Viganj location map: real Leaflet + OpenStreetMap map, self-contained to this page ---- */
+.map-intro{max-width:38em;}
+
+.map-frame{
+  max-width:1000px; margin:2.6rem auto 0;
+  border-radius: var(--radius); overflow:hidden;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(14,35,64,.08);
+  background: var(--cloud);
+  position:relative;
+}
+.map-live{ width:100%; height:520px; background: var(--sky); }
+.map-caption{
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  flex-wrap:wrap;
+  padding:.9rem 1.4rem; background: var(--cloud); border-top:1px solid rgba(14,35,64,.08);
+  font-size:.85rem; color: var(--navy-soft);
+}
+.map-caption strong{ color:var(--navy); font-family:var(--display); font-weight:600; }
+@media (max-width:900px){ .map-live{ height:440px; } }
+@media (max-width:640px){ .map-frame{ border-radius:14px; } .map-live{ height:380px; } .map-caption{ font-size:.8rem; padding:.85rem 1.1rem; } }
+
+/* Leaflet chrome, restyled to feel like Villa Rosa rather than a raw embed */
+.map-live .leaflet-control-zoom{
+  border:none; box-shadow: 0 8px 20px rgba(14,35,64,.18); border-radius:10px; overflow:hidden;
+}
+.map-live .leaflet-control-zoom a{
+  width:36px; height:36px; line-height:36px;
+  background: var(--cloud); color: var(--navy);
+  font-family: var(--body); font-weight:700;
+}
+.map-live .leaflet-control-zoom a:hover{ background: var(--aperol); color:#fff; }
+.map-live .leaflet-control-attribution{
+  font-family: var(--body); font-size:10.5px; background: rgba(250,249,246,.85);
+}
+.map-live .leaflet-popup-content-wrapper{ border-radius:12px; box-shadow: var(--shadow); }
+.map-live .leaflet-popup-content{ margin:.85em 1.05em; }
+.vr-popup-title{ font-family: var(--display); font-weight:700; font-size:1.05rem; color:var(--navy); display:block; }
+.vr-popup-sub{ font-family: var(--body); font-weight:600; font-size:.76rem; letter-spacing:.06em; text-transform:uppercase; color: var(--adriatic); display:block; margin-top:.25em; }
+
+/* custom Villa Rosa marker: pin + pulse ring, both children of the div Leaflet
+   itself positions — animated independently so they never fight Leaflet's own
+   transform on the marker-icon element */
+.vr-marker{ background:none; border:none; }
+.vr-marker-inner{ position:relative; width:30px; height:42px; }
+.vr-marker-pulse{
+  position:absolute; left:50%; top:14px; width:14px; height:14px; margin:-7px 0 0 -7px;
+  border-radius:50%; background: var(--aperol); opacity:0;
+}
+.vr-marker-pin{
+  position:absolute; left:50%; top:0; width:28px; height:28px; margin-left:-14px;
+  background: var(--aperol); border:3px solid var(--cloud);
+  border-radius:50% 50% 50% 0; transform:rotate(-45deg) scale(0);
+  box-shadow: 0 8px 16px rgba(14,35,64,.35);
+  transition: transform .6s cubic-bezier(.34,1.56,.64,1);
+}
+.vr-marker-pin::after{
+  content:''; position:absolute; top:50%; left:50%; width:9px; height:9px;
+  margin:-4.5px 0 0 -4.5px; background: var(--cloud); border-radius:50%;
+}
+.map-ready .vr-marker-pin{ transform:rotate(-45deg) scale(1); }
+@media not (prefers-reduced-motion: reduce){
+  .map-ready .vr-marker-pulse{ animation: vrPulse 2.6s ease-out .6s infinite; }
+}
+@keyframes vrPulse{
+  0%{ opacity:.55; transform:scale(1); }
+  100%{ opacity:0; transform:scale(3.4); }
+}
+@media (prefers-reduced-motion: reduce){
+  .vr-marker-pin{ transition:none; transform:rotate(-45deg) scale(1) !important; }
+  .vr-marker-pulse{ display:none; }
+}
+
+/* ---- Viganj eat & drink: editorial proximity cards, self-contained to this page ---- */
+.eat-intro{ max-width:38em; }
+.eat-grid{
+  display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr));
+  gap:1.4rem; margin-top:2.4rem;
+}
+.eat-card{
+  background: var(--cloud); border-radius:16px; padding:1.7rem 1.5rem;
+  box-shadow: var(--shadow); display:flex; flex-direction:column; gap:.85rem;
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.eat-card:hover{ transform: translateY(-4px); box-shadow: 0 26px 56px rgba(14,35,64,.18); }
+.eat-badge{
+  display:inline-flex; align-self:flex-start; align-items:center;
+  background: var(--aperol); color:#fff; font-family:var(--body); font-weight:700;
+  font-size:.72rem; letter-spacing:.09em; text-transform:uppercase;
+  padding:.42em .9em; border-radius:999px;
+}
+.eat-name{ font-family:var(--display); font-weight:600; font-size:1.28rem; color:var(--navy); }
+.eat-desc{ font-size:.92rem; color:var(--navy-soft); line-height:1.55; margin:0; }
+.eat-more{
+  text-align:center; margin-top:2.4rem; font-family:var(--display); font-style:italic;
+  font-size:1.15rem; color:var(--adriatic);
+}
+@media (max-width:640px){
+  .eat-grid{ grid-template-columns:1fr 1fr; gap:1rem; }
+  .eat-card{ padding:1.4rem 1.2rem; }
+}
+@media (max-width:420px){
+  .eat-grid{ grid-template-columns:1fr; }
+}
+</style>
 </head>
 <body>
 
@@ -16,13 +123,8 @@
   <div class="wrap">
     <a href="index.html" class="brand">
       <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="20" cy="20" r="9" fill="#F7C53F"/>
-        <g stroke="#C8532E" stroke-width="2.4" stroke-linecap="round">
-          <line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/>
-          <line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/>
-          <line x1="7.5" y1="7.5" x2="11" y2="11"/><line x1="29" y1="29" x2="32.5" y2="32.5"/>
-          <line x1="32.5" y1="7.5" x2="29" y2="11"/><line x1="11" y1="29" x2="7.5" y2="32.5"/>
-        </g>
+        <text x="1" y="27" font-family="'Fraunces', Georgia, serif" font-size="25" font-weight="600" letter-spacing="-2" fill="currentColor">VR</text>
+        <path d="M3 34 Q8 30 13 34 T23 34 T33 34" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
       </svg>
       <span>Villa Rosa<span class="brand-sub">Viganj · Croatia</span></span>
     </a>
@@ -51,8 +153,6 @@
   </div>
 </section>
 
-<div class="scallop" style="--above:var(--ink);--below:var(--cream);"></div>
-
 <section class="section bg-cream">
   <div class="wrap">
     <div class="editorial-grid">
@@ -71,14 +171,76 @@
   </div>
 </section>
 
-<div class="scallop" style="--above:var(--cream);--below:var(--adriatic);"></div>
+<div class="scallop" style="--above:var(--cream);--below:var(--cream);"></div>
+
+<section class="section bg-cream">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Eat &amp; drink</span>
+      <h2>Everywhere you'll want to eat, minutes from the door.</h2>
+      <p class="lede eat-intro mt-1" style="margin-left:auto;margin-right:auto;">A few of our favourite places nearby — most of them an easy walk from Villa Rosa.</p>
+    </div>
+    <div class="eat-grid">
+      <div class="eat-card reveal reveal-1">
+        <span class="eat-badge">15 min walk</span>
+        <span class="eat-name">Ciringito</span>
+        <p class="eat-desc">A laid-back waterfront spot for food and drinks, an easy 15-minute stroll along the coast from Villa Rosa.</p>
+      </div>
+      <div class="eat-card reveal reveal-2">
+        <span class="eat-badge">2 min walk</span>
+        <span class="eat-name">Karmela</span>
+        <p class="eat-desc">Just around the corner from Villa Rosa.</p>
+      </div>
+      <div class="eat-card reveal reveal-3">
+        <span class="eat-badge">7 min walk</span>
+        <span class="eat-name">Ponta</span>
+        <p class="eat-desc">An easy stroll from the house for food and drinks by the water.</p>
+      </div>
+      <div class="eat-card reveal reveal-4">
+        <span class="eat-badge">5 min drive</span>
+        <span class="eat-name">Restoran Vrgorac</span>
+        <p class="eat-desc">A great nearby option when you want to venture a little further.</p>
+      </div>
+      <div class="eat-card reveal reveal-4">
+        <span class="eat-badge">10 min boat taxi</span>
+        <span class="eat-name">La Banya Beach Club</span>
+        <p class="eat-desc">A fun option across the water, reached by boat taxi.</p>
+      </div>
+    </div>
+    <p class="eat-more reveal">And plenty more along the coast&hellip;</p>
+  </div>
+</section>
+
+<div class="scallop" style="--above:var(--cream);--below:var(--sky);"></div>
+
+<section class="section bg-sky">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Find us</span>
+      <h2>Your little corner of the Adriatic.</h2>
+      <p class="lede map-intro mt-1" style="margin-left:auto;margin-right:auto;">Villa Rosa sits in Viganj on the Pelješac peninsula, with Korčula just across the channel. Explore the map to see exactly where we are.</p>
+    </div>
+    <div class="map-frame reveal reveal-2">
+      <div id="villa-map" class="map-live" aria-label="Interactive map showing Villa Rosa's location in Viganj on the Pelješac peninsula, Croatia, with Korčula across the channel"></div>
+      <div class="map-caption">
+        <span><strong>Villa Rosa</strong> · Viganj, Pelješac, Croatia</span>
+        <span>Drag to pan &middot; use +/&minus; to zoom</span>
+      </div>
+      <noscript>
+        <p style="padding:1rem 1.4rem;margin:0;background:var(--cloud);">Villa Rosa, Viganj, Pelješac peninsula, Croatia — 42.983580&deg;N, 17.099933&deg;E. <a href="https://www.openstreetmap.org/?mlat=42.983580&mlon=17.099933#map=13/42.983580/17.099933" target="_blank" rel="noopener">View on OpenStreetMap &rarr;</a></p>
+      </noscript>
+    </div>
+  </div>
+</section>
+
+<div class="scallop" style="--above:var(--sky);--below:var(--adriatic);"></div>
 
 <section class="section bg-adriatic">
   <div class="wrap">
     <div class="section-head center reveal">
       <span class="eyebrow on-dark">Windsurfing capital</span>
       <h2>The wind that put Viganj on the map.</h2>
-      <p class="lede mt-1" style="color:rgba(255,253,248,.9);margin-left:auto;margin-right:auto;">Viganj is one of Croatia's best-known spots for windsurfing, kitesurfing and stand-up paddleboarding, thanks to the reliable Adriatic wind funnelling between the mainland and Korčula.</p>
+      <p class="lede mt-1" style="color:rgba(250,248,244,.9);margin-left:auto;margin-right:auto;">Viganj is one of Croatia's best-known spots for windsurfing, kitesurfing and stand-up paddleboarding, thanks to the reliable Adriatic wind funnelling between the mainland and Korčula.</p>
     </div>
     <div class="glance-grid">
       <div class="glance-item reveal reveal-1"><strong>Windsurfing</strong><span>Lessons at Water Donkey School</span></div>
@@ -89,43 +251,38 @@
   </div>
 </section>
 
-<div class="scallop" style="--above:var(--adriatic);--below:var(--white);"></div>
+<div class="scallop" style="--above:var(--adriatic);--below:var(--sky);"></div>
 
-<section class="section bg-white">
+<section class="section bg-sky">
   <div class="wrap">
     <div class="editorial-grid">
       <div style="grid-column:1/span 5;align-self:center;" class="reveal">
-        <span class="eyebrow">Getting around</span>
-        <h2>Stari Grad Plain, on your doorstep.</h2>
-        <p class="body-text mt-2">Villa Rosa sits right by the Stari Grad Plain, an ancient agricultural landscape, and around 11 minutes' walk from a village beach. Orebić and its harbour are a short drive away, and Korčula Old Town is reachable in about half an hour by car — or a short hop by ferry.</p>
+        <span class="eyebrow">Watersports</span>
+        <h2>Made for the wind.</h2>
+        <p class="body-text mt-2">Viganj is one of Croatia's best-known spots for windsurfing and kitesurfing, with the afternoon Maestral wind bringing brilliant conditions to the bay. Whether you already know what you&rsquo;re doing or fancy trying it for the first time, there are watersports centres and lessons available nearby. Or simply grab a drink by the water and watch the sails fill the bay.</p>
       </div>
       <div style="grid-column:7/span 6;" class="reveal reveal-2">
-        <div class="glance-grid" style="grid-template-columns:1fr 1fr;">
-          <div class="glance-item"><strong>Stari Grad Plain</strong><span>1 minute walk</span></div>
-          <div class="glance-item"><strong>Village beach</strong><span>~11 minute walk</span></div>
-          <div class="glance-item"><strong>Orebić Harbour</strong><span>~10 minute drive</span></div>
-          <div class="glance-item"><strong>Korčula Old Town</strong><span>~30 minute drive, or ferry</span></div>
-        </div>
+        <div class="eg-img shadow-lift"><img src="assets/images/windsurfing.jpg" alt="Windsurfing lesson in the shallow water off Viganj beach"></div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="scallop" style="--above:var(--white);--below:var(--terracotta);"></div>
+<div class="scallop" style="--above:var(--sky);--below:var(--lemon);"></div>
 
-<section class="section bg-terracotta">
+<section class="section bg-lemon">
   <div class="wrap center reveal">
-    <span class="eyebrow on-dark">Beyond the village</span>
+    <span class="eyebrow on-sunshine">Beyond the village</span>
     <h2>Wineries, beaches and boat trips across Pelješac.</h2>
-    <p class="lede mt-1" style="color:rgba(255,253,248,.9);margin:1rem auto 0;">Pelješac is one of Croatia's great wine-growing peninsulas, with quiet coves and secluded beaches beyond the village. See the full list of day trips and things to do nearby.</p>
-    <a href="explore.html" class="btn btn-lemon mt-2">Explore Pelješac &amp; Korčula &rarr;</a>
+    <p class="lede mt-1" style="margin:1rem auto 0;">Pelješac is one of Croatia's great wine-growing peninsulas, with quiet coves and secluded beaches beyond the village. See the full list of day trips and things to do nearby.</p>
+    <a href="explore.html" class="btn btn-outline-dark mt-2">Explore Pelješac &amp; Korčula &rarr;</a>
   </div>
 </section>
 
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-grid">
-      <div><div class="footer-brand">Villa Rosa</div><p style="color:rgba(255,253,248,.7);max-width:26em;">Viganj, Pelješac<br>Croatia</p></div>
+      <div><div class="footer-brand">Villa Rosa</div><p style="color:rgba(250,248,244,.7);max-width:26em;">Viganj, Pelješac<br>Croatia</p></div>
       <div class="footer-col"><h4>Explore</h4><a href="the-villa.html">The Villa</a><a href="gallery.html">Gallery</a><a href="viganj.html">Viganj</a><a href="explore.html">Explore</a></div>
       <div class="footer-col"><h4>Plan</h4><a href="reviews.html">Reviews</a><a href="availability.html">Availability</a><a href="contact.html">Contact</a></div>
       <div class="footer-col"><h4>Get in touch</h4><a href="tel:+447745309227">+44 7745 309227</a><a href="contact.html">Send an enquiry</a></div>
@@ -135,5 +292,69 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  var mapEl = document.getElementById('villa-map');
+  if (!mapEl || typeof L === 'undefined') return;
+
+  var VILLA_ROSA = [42.983580, 17.099933];
+
+  var map = L.map(mapEl, {
+    zoomControl: true,
+    scrollWheelZoom: false,
+    minZoom: 9,
+    maxZoom: 18
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // frames Pelješac's north and south coastline, the channel and Korčula,
+  // so the real tiles make it obvious Viganj sits on a peninsula, not an island
+  map.fitBounds([[42.895, 16.995], [43.03, 17.235]]);
+
+  var icon = L.divIcon({
+    className: 'vr-marker',
+    html: '<span class="vr-marker-inner"><span class="vr-marker-pulse"></span><span class="vr-marker-pin"></span></span>',
+    iconSize: [30, 42],
+    iconAnchor: [15, 42],
+    popupAnchor: [0, -34]
+  });
+
+  var marker = L.marker(VILLA_ROSA, { icon: icon, alt: 'Villa Rosa' }).addTo(map);
+  marker.bindPopup('<span class="vr-popup-title">Villa Rosa</span><span class="vr-popup-sub">Viganj &middot; Pelješac &middot; Croatia</span>');
+
+  // scroll-wheel zoom only once the visitor has engaged with the map, so the
+  // page itself keeps scrolling normally over it
+  mapEl.addEventListener('mouseenter', function(){ map.scrollWheelZoom.enable(); });
+  mapEl.addEventListener('mouseleave', function(){ map.scrollWheelZoom.disable(); });
+  mapEl.addEventListener('focusin', function(){ map.scrollWheelZoom.enable(); });
+
+  window.addEventListener('load', function(){ map.invalidateSize(); });
+
+  // entrance choreography: once the frame has scrolled into view, let its
+  // own fade/scale reveal settle, then pop the marker and start its pulse
+  var frame = mapEl.closest('.map-frame');
+  function popMarkerIn(){
+    setTimeout(function(){
+      mapEl.classList.add('map-ready');
+      map.invalidateSize();
+    }, 700);
+  }
+  if (frame && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { popMarkerIn(); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+    io.observe(frame);
+  } else {
+    popMarkerIn();
+  }
+})();
+</script>
 </body>
 </html>
